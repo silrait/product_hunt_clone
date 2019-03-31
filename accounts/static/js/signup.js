@@ -2,7 +2,7 @@
 $( () => {
     $('#confirmpassword').change(checkPasswordsMatch)
     $("form").submit((e) =>{
-        return checkPasswordsMatch()
+        checkPasswordsMatch()
     })
 })
 
@@ -11,5 +11,6 @@ function checkPasswordsMatch(){
 
     passwords.addClass( ( passwords[0].value !== passwords[1].value)? 'is-invalid' : 'is-valid')
     passwords.removeClass( !( passwords[0].value !== passwords[1].value)? 'is-invalid' : 'is-valid')
-    return ( passwords[0].value !== passwords[1].value)? false : true
+
+    passwords[1].setCustomValidity( ( passwords[0].value !== passwords[1].value)? 'Passwords must be equal' : '' )
 }
